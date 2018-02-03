@@ -10,7 +10,7 @@
     <modules>
         <module>api-gateway</module>
         <module>active-mq</module>
-        <module>operate-Log</module>
+        <module>operate-log</module>
         <module>spring-security</module>
         <module>learn-akka</module>
     </modules>
