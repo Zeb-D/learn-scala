@@ -1,0 +1,81 @@
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://www.springframework.org/schema/security"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+            http://www.springframework.org/schema/security
+            http://www.springframework.org/schema/security/spring-security-3.2.xsd"
+             default-lazy-init="false">
+
+    <!--CAP4i spring-security的安全配置案例 -->
+    <!--access-denied-page指明拒绝访问时URL转向 -->
+    <http access-denied-page="/WEB-INF/deniedredirect.jsp" auto-config="false">
+        <!--login-page指明登录页面URL，login-processing-url指明表单处理URL -->
+        <!--authentication-success-handler-ref指明登录成功后的处理器，可实现按不同权限跳转至不同的业务主页 -->
+        <form-login login-page="/login"/>
+
+        <anonymous enabled="false"/>
+
+        <!--logout-success-url指明登出跳转URL，logout-url指明登出处理URL -->
+        <logout logout-success-url="/login.do" logout-url="/logout"/>
+
+        <!--invalid-session-url指明会话失效时跳转的URL -->
+        <session-management invalid-session-url="/login.do"/>
+
+
+        <!--filters指向none时，表示pattern中匹配的路径不需要特定访问权限 -->
+        <intercept-url pattern="/login.do" filters="none"/>
+        <intercept-url pattern="/resources/**" filters="none"/>
+        <intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY"/>
+        <custom-filter before="FORM_LOGIN_FILTER" ref="CustomLoginFilter"/>
+        <custom-filter before="FILTER_SECURITY_INTERCEPTOR" ref="menuFilter"/>
+    </http>
+
+    <beans:bean id="loginLogAuthenticationSuccessHandler"
+                class="com.yd.security.security.CustomAuthenticationSuccessHandler">
+        <!-- TODO 配置登录成功后的跳转页面，如不需要修改，直接删除本行即可 -->
+        <beans:property name="defaultTargetUrl" value="/index.do">
+        </beans:property>
+        <!-- 未绑定notesid账户跳转至此页面进行绑定 -->
+        <beans:property name="bindNotesidUrl" value="/bindNotesid.do">
+        </beans:property>
+    </beans:bean>
+
+    <beans:bean id="loginLogAuthenticationFailHandler"
+                class="com.yd.security.security.CustomAuthenticationFailHandler">
+        <beans:property name="defaultFailureUrl" value="/login.do"></beans:property>
+    </beans:bean>
+
+    <beans:bean id="userDetailsService"
+                class="com.yd.security.security.UserDetailsServiceImpl">
+    </beans:bean>
+
+
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider ref="euipAuthenticationProvider"/>
+    </authentication-manager>
+
+    <beans:bean id="euipAuthenticationProvider" class="com.yd.security.security.EUIPAuthenticationProvider">
+        <beans:property name="saltSource" ref="saltSource"/>
+    </beans:bean>
+
+    <beans:bean id="saltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource">
+        <beans:property name="userPropertyToUse" value="userNo"></beans:property>
+    </beans:bean>
+
+    <!-- 基于表单的登陆filter -->
+    <beans:bean id="CustomLoginFilter" class="com.yd.security.security.CustomLoginFilter">
+        <beans:property name="authenticationManager" ref="authenticationManager"/>
+        <beans:property name="filterProcessesUrl" value="/cap_login"/>
+        <beans:property name="authenticationSuccessHandler" ref="loginLogAuthenticationSuccessHandler"/>
+        <beans:property name="authenticationFailureHandler" ref="loginLogAuthenticationFailHandler"/>
+    </beans:bean>
+
+    <beans:bean id="menuFilter"
+                class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
+        <beans:property name="authenticationManager" ref="authenticationManager"/>
+        <beans:property name="accessDecisionManager" ref="menuAccessDecisionManagerBean"/>
+        <beans:property name="securityMetadataSource" ref="menuSecurityMetadataSource"/>
+    </beans:bean>
+
+</beans:beans>
