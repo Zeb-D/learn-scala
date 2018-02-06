@@ -1,4 +1,4 @@
-package com.yd.akka.actor;
+package com.yd.akka.actor.hello;
 
 import akka.actor.AbstractActor;
 import akka.event.Logging;
@@ -15,7 +15,7 @@ import java.util.Map;
  **/
 public class AkkademyDb extends AbstractActor {
     protected final LoggingAdapter log = Logging.getLogger(context().system(), this);
-    protected final Map<String, Object> map = new HashMap<String, Object>();
+    public final Map<String, Object> map = new HashMap<String, Object>();
 
     private AkkademyDb() {
         receive(ReceiveBuilder

@@ -12,4 +12,8 @@ public class Class1Mocked {
     public void show(){
         System.out.println("Class1Mocked.show()");
     }
+
+    public static void main(String[] args) {
+
+    }
 }
