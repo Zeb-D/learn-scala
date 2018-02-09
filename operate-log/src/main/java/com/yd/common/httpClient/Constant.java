@@ -1,5 +1,6 @@
-package com.yd.common;
+package com.yd.common.httpClient;
 
+import com.yd.common.Encoding;
 import com.yd.common.util.properties.Prop;
 import com.yd.common.util.properties.Proper;
 
@@ -30,7 +31,7 @@ public class Constant {
             fileRenamer = null;
             xForwardedSupports = new String[]{"127.0.0.1"};
 
-            smsUrl="http://b2b2c.sms:10008/jsse";//短信地址
+            smsUrl = "http://b2b2c.sms:10008/jsse";//短信地址
         } else {
             encoding = constants.get("app.encoding", Encoding.UTF_8.name());
             fileRenamer = constants.get("app.fileRenamer");
@@ -41,7 +42,7 @@ public class Constant {
                 xForwardedSupports = xForwardedSupportsStr.split(",");
             }
 
-            smsUrl=constants.get("sms.url","http://b2b2c.sms:10008/jsse");//短信地址
+            smsUrl = constants.get("sms.url", "http://b2b2c.sms:10008/jsse");//短信地址
 
         }
     }

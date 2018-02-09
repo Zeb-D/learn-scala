@@ -8,6 +8,8 @@ import com.yd.akka.actor.hello.AkkademyDb;
 import com.yd.akka.entity.SetRequest;
 import org.junit.Test;
 
+import java.util.ConcurrentModificationException;
+
 import static org.junit.Assert.assertEquals;
 
 public class AkkademyDbTest {

@@ -1,6 +1,6 @@
 package com.yd.common.util.properties;
 
-import com.yd.common.Constant;
+import com.yd.common.httpClient.Constant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

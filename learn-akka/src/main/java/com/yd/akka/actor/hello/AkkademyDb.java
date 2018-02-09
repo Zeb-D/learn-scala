@@ -18,6 +18,7 @@ public class AkkademyDb extends AbstractActor {
     public final Map<String, Object> map = new HashMap<String, Object>();
 
     private AkkademyDb() {
+        System.out.println("AkkademyDb");
         receive(ReceiveBuilder
                 .match(SetRequest.class, message -> {
                     log.info("Received Set request: {}", message);

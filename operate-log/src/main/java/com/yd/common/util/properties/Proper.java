@@ -1,6 +1,6 @@
 package com.yd.common.util.properties;
 
-import com.yd.common.Constant;
+import com.yd.common.httpClient.Constant;
 
 import java.io.File;
 import java.util.Map;
