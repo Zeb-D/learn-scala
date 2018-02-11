@@ -13,6 +13,7 @@
         <module>operate-log</module>
         <module>spring-security</module>
         <module>learn-akka</module>
+        <module>learn-concurrency</module>
     </modules>
 
 
