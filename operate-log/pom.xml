@@ -138,6 +138,16 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.yd</groupId>
+            <artifactId>api-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.yd</groupId>
+            <artifactId>learn-concurrency</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 </project>

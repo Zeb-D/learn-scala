@@ -8,6 +8,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>api-common</module>
         <module>api-gateway</module>
         <module>active-mq</module>
         <module>operate-log</module>
