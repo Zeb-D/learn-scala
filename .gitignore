@@ -19,3 +19,4 @@ logException
 logException/*
 bin/*
 *.projecta
+scala-tuya-api/*

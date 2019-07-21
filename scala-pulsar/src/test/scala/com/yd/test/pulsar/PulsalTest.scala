@@ -17,7 +17,8 @@ class PulsalTest {
     val consumer = client.newConsumer().topic("my-topic").subscriptionName("pulsar-my-sub")
       .ackTimeout(1, TimeUnit.SECONDS).subscribe();
 
-    var msg = consumer.receive(2, TimeUnit.SECONDS);
+    val msg = consumer.receive(2, TimeUnit.SECONDS);
+    consumer.acknowledgeAsync(msg)
     println(new String(msg.getData))
   };
 
@@ -28,7 +29,7 @@ class PulsalTest {
     val producer = client.newProducer.topic("my-topic").create
 
     // You can then send messages to the broker and topic you specified:
-    val msgId = producer.send("My message -2".getBytes(Charset.forName("UTF-8")))
+    val msgId = producer.send("My message -3".getBytes(Charset.forName("UTF-8")))
     println(new String(msgId.toByteArray))
   }
 }
