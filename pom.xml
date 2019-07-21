@@ -12,6 +12,8 @@
         <module>scala-spring-boot</module>
         <module>scala-webflux</module>
         <module>scala-benchmark</module>
+        <module>scala-tuya-api</module>
+        <module>scala-pulsar</module>
     </modules>
 
     <properties>
