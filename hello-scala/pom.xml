@@ -8,10 +8,6 @@
     </parent>
     <groupId>com.yd.scala</groupId>
     <artifactId>hello-scala</artifactId>
-    <inceptionYear>2008</inceptionYear>
-    <properties>
-        <scala.version>2.11.8</scala.version>
-    </properties>
 
     <dependencies>
         <dependency>
