@@ -1,4 +1,4 @@
-package com.yd.scala
+package com.yd.scala.hello
 
 /**
   * 循环语法比较特别，使用 for + <- 来进行遍历元素，并提供了便捷的 until方法，to方法来实现遍历,

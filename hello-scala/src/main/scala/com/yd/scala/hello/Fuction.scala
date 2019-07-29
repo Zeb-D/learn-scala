@@ -1,4 +1,4 @@
-package com.yd.scala
+package com.yd.scala.hello
 
 /**
   * 方法与参数
