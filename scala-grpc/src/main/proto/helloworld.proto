@@ -5,8 +5,6 @@ option java_package = "com.yd.scala.grpc.hello";
 option java_outer_classname = "HelloWorldProto";
 option objc_class_prefix = "HLW";
 
-package helloworld;
-
 // The greeting service definition.
 service Greeter {
   // Sends a greeting

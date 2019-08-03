@@ -4,10 +4,12 @@ import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
 import java.io.IOException;
+import java.util.Random;
 import java.util.logging.Logger;
 
 /**
  * http://doc.oschina.net/grpc
+ * https://github.com/grpc/grpc-java
  * Server that manages startup/shutdown of a {@code Greeter} server.
  */
 public class HelloWorldServer {
@@ -62,7 +64,7 @@ public class HelloWorldServer {
 
     @Override
     public void sayHello(HelloRequest req, StreamObserver<HelloReply> responseObserver) {
-      HelloReply reply = HelloReply.newBuilder().setMessage("Hello " + req.getName()).build();
+      HelloReply reply = HelloReply.newBuilder().setMessage("Hello " + req.getName()+ new Random().nextDouble()).build();
       responseObserver.onNext(reply);
       responseObserver.onCompleted();
     }
