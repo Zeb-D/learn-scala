@@ -41,6 +41,7 @@ public class JavaAskTest {
         cs.exceptionally(t -> {
             return "default";
         });
+        cs.handle((x, t) -> null).thenCombine(askPong("pong"), (a, b) -> null);
 
     }
 

@@ -1,10 +1,10 @@
-package com.yd.akka.test
+package com.yd.akka.test.db
 
 import akka.actor.ActorSystem
 import akka.testkit.TestActorRef
 import akka.util.Timeout
-import com.yd.akka.AkkademyDb
 import com.yd.entity.SetRequest
+import com.yd.scala.akka.db.AkkademyDb
 import org.junit.Test
 import org.scalatest.Matchers
 

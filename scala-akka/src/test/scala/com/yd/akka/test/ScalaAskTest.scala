@@ -30,16 +30,18 @@ class ScalaAskTest extends Matchers {
     val result = Await.result(future1.mapTo[String], 1 second)
 
     //两次发起请求，第一次发起后，再发起
-    val f: Future[String] = askPong("Ping1").flatMap(x => askPong(x))
+    val f: Future[String] = askPong("Ping").flatMap(x => askPong(x))
     f.onSuccess { case x: String => println("Success " + x) }
     //在失败情况下执行代码
     f.onFailure { case e: Exception => println("Got exception " + e) }
-    //从失败中恢复:todo并不能在异常的时候给值返回
+    //从失败中恢复:todo 并不能在异常的时候给值返回
     f.recover {
       case e: Exception => "scala " + e.getMessage
       case je: java.lang.Exception => "java " + je.getMessage
-      case _: Throwable => "default"
+      case _: Throwable => askPong("Pong")
     }
+    //异步地从失败中恢复
+    f.recoverWith { case t: Exception => askPong("Pong") }
     println("finally get:" + Await.result(f.mapTo[String], 1 second))
 
 
@@ -50,6 +52,13 @@ class ScalaAskTest extends Matchers {
     intercept[Exception] {
       Await.result(future.mapTo[String], 1 second)
     }
+    val f1 = Future {
+      4
+    }
+    val f2 = Future {
+      5
+    }
+    val fa: Future[Int] = for (res1 <- f1; res2 <- f2) yield res1 + res2
   }
 
   def askPong(message: String): Future[String] = (pongActor ? message).mapTo[String]
