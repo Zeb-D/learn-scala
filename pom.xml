@@ -11,6 +11,7 @@
         <module>hello-scala</module>
         <module>scala-akka</module>
         <module>scala-grpc</module>
+        <module>scala-mqtt</module>
         <module>scala-spring-boot</module>
         <module>scala-webflux</module>
         <module>scala-benchmark</module>
