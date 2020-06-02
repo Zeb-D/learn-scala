@@ -19,7 +19,7 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 /**
- * @author created by zouyd on 2019-06-10 20:29
+ * @author created by Zeb-D on 2019-06-10 20:29
  */
 @Configuration
 @ConditionalOnProperty(name = "redis.enable", havingValue = "true", matchIfMissing = true)

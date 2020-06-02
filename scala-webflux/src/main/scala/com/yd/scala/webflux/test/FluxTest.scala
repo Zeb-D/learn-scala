@@ -11,7 +11,7 @@ import reactor.core.publisher.Flux
   * 集合的Flux 对应数据是{0,N}
   * </p>
   *
-  * @author created by zouyd on 2019-06-09 16:41
+  * @author created by Zeb-D on 2019-06-09 16:41
   */
 object FluxTest {
   def main(args: Array[String]) {

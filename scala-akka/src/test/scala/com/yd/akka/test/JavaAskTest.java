@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 import static scala.compat.java8.FutureConverters.toJava;
 
 /**
- * @author created by zouyd on 2019-08-03 23:40
+ * @author created by Zeb-D on 2019-08-03 23:40
  */
 public class JavaAskTest {
     ActorSystem actorSystem = ActorSystem.create();

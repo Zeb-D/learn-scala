@@ -1,7 +1,7 @@
 package com.yd.scala.hello
 
 /**
-  * @author created by zouyd on 2019-07-28 23:37
+  * @author created by Zeb-D on 2019-07-28 23:37
   */
 object HelloScala {
 

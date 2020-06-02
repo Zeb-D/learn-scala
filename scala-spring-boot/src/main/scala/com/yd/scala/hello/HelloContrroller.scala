@@ -11,3 +11,7 @@ class HelloContrroller {
   }
 
 }
+
+object HelloContrroller {
+
+}

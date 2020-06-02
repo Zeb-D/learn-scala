@@ -3,7 +3,7 @@ package com.yd.scala.akka.db
 import akka.actor.{ActorSystem, Props}
 
 /**
-  * @author created by zouyd on 2019-08-04 18:36
+  * @author created by Zeb-D on 2019-08-04 18:36
   */
 object DBStarter extends App {
   val system = ActorSystem("akkademy")

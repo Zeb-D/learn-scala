@@ -3,7 +3,7 @@ package com.yd.scala.hello
 /**
   * 流程与条件
   *
-  * @author created by zouyd on 2019-06-15 18:10
+  * @author created by Zeb-D on 2019-06-15 18:10
   */
 object Condition {
   def numConvert2Str(str: Int): String = str match {

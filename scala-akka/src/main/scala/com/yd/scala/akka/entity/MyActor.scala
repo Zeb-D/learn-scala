@@ -3,7 +3,7 @@ package com.yd.entity
 import akka.actor.{Actor, ActorLogging, ActorRef}
 
 /**
-  * @author created by zouyd on 2019-07-21 23:41
+  * @author created by Zeb-D on 2019-07-21 23:41
   */
 class MyActor extends Actor with ActorLogging {
   var parentActorRef: ActorRef = _

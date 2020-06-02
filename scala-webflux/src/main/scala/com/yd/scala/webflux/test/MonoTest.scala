@@ -10,7 +10,7 @@ import reactor.core.publisher.Mono
   * 基于事件模式或者订阅者模式
   * 可以产生一个消息，多个消费者
   *
-  * @author created by zouyd on 2019-06-09 16:01
+  * @author created by Zeb-D on 2019-06-09 16:01
   */
 object MonoTest {
   def main(args: Array[String]) {

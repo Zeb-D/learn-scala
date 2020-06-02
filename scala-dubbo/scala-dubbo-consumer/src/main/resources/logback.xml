@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <springProperty name="APP_NAME" scope="context" source="spring.application.name" defaultValue="undefined"/>
+    <property name="LOG_HOME" value="./data/dubbo/${APP_NAME}/log"/>
+    <property name="LOG_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss.SSS} -%5p] %-40.40logger{39} : %msg%n"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${LOG_PATTERN}</pattern>
+        </layout>
+    </appender>
+
+    <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/${APP_NAME}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/${APP_NAME}.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${LOG_PATTERN}</pattern>
+        </layout>
+    </appender>
+
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/${APP_NAME}_error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/${APP_NAME}_error.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${LOG_PATTERN}</pattern>
+        </layout>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>error</level>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <appender name="REPORT_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/REPORT/tuya-api-gateway_report.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/REPORT/tuya-api-gateway_report.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="REPORT_LOG_TEMP"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/TEMP/tuya-api-gateway_temp.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/TEMP/tuya-api-gateway_temp.log.%d{yyyy-MM-dd}
+            </fileNamePattern>
+            <maxHistory>1</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="HTTP_404_CODE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/ACCESSS_LOG/tuya-api-gateway_404_report.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/ACCESSS_LOG/tuya-api-gateway_404_report.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <appender name ="ASYNC_REPORT_FILE" class= "ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold >0</discardingThreshold>
+        <queueSize>20480</queueSize>
+        <appender-ref ref = "REPORT_LOG"/>
+    </appender>
+
+    <appender name ="ASYNC_REPORT_FILE" class= "ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold >0</discardingThreshold>
+        <queueSize>20480</queueSize>
+        <appender-ref ref = "REPORT_LOG"/>
+    </appender>
+
+    <logger name="ReportAccessLog" level="INFO" additivity="false">
+        <appender-ref ref="ASYNC_REPORT_FILE" />
+    </logger>
+
+    <!-- 临时日志 -->
+    <logger name="ReportTempLog" level="INFO" additivity="false">
+        <appender-ref ref="REPORT_LOG_TEMP" />
+    </logger>
+
+    <!-- 404的miss日志 -->
+    <logger name="missCodeURLLog" level="INFO" additivity="false">
+        <appender-ref ref="HTTP_404_CODE_LOG" />
+    </logger>
+
+    <logger name="com.tuya" level="DEBUG" additivity="false">
+        <appender-ref ref="INFO_FILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <!-- By default, the level of the root level is set to DEBUG -->
+    <root level="DEBUG">
+        <appender-ref ref="INFO_FILE"/>
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+</configuration>

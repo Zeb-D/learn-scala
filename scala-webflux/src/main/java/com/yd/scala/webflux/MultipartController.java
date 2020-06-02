@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
  * 在spring webflux的controller中，Mono很好理解，代表前端的一次传参或接口的一次返回。
  * 接受Multipart参数、返回Stream类型数据或者用于分批返回
  *
- * @author created by zouyd on 2019-06-10 16:25
+ * @author created by Zeb-D on 2019-06-10 16:25
  */
 @RestController
 @RequestMapping("/uploads")

@@ -7,7 +7,7 @@ import org.junit.Test
 /**
   * https://blog.csdn.net/lovehuangjiaju/article/details/51045146
   * Actor引用、Actor路径
-  * @author created by zouyd on 2019-07-21 23:43
+  * @author created by Zeb-D on 2019-07-21 23:43
   */
 class ActorModeTest extends App {
 

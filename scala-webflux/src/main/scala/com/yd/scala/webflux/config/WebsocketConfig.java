@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author created by zouyd on 2019-06-11 12:58
+ * @author created by Zeb-D on 2019-06-11 12:58
  */
 @Configuration
 @ConditionalOnProperty(name = "websocket.enable", havingValue = "true", matchIfMissing = true)

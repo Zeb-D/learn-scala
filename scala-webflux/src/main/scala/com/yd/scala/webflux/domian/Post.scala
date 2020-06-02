@@ -3,7 +3,7 @@ package com.yd.scala.webflux.domian
 import org.springframework.data.annotation.Id
 
 /**
-  * @author created by zouyd on 2019-06-10 15:05
+  * @author created by Zeb-D on 2019-06-10 15:05
   */
 class Post {
   @Id

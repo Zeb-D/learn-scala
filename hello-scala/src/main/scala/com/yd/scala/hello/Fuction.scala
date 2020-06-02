@@ -10,7 +10,7 @@ package com.yd.scala.hello
   * 支持不按照定义顺序，按照指定参数名字进行参数传递
   * 在参数类型后面放星号 *，表示可重复的参数
   *
-  * @author created by zouyd on 2019-06-15 17:25
+  * @author created by Zeb-D on 2019-06-15 17:25
   */
 object Fuction {
   private def add2(x: Int, y: Float = 1.0f): Int = {

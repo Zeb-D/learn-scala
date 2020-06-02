@@ -12,7 +12,7 @@ import scala.concurrent.duration._
 /**
   * actorSelection 获取指向 Actor 的引用
   *
-  * @author created by zouyd on 2019-07-28 23:13
+  * @author created by Zeb-D on 2019-07-28 23:13
   */
 class ActorSelectionTest {
   private[test] val system = ActorSystem.create

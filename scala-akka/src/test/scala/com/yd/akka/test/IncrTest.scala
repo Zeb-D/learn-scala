@@ -8,7 +8,7 @@ import scala.concurrent.Future
 /**
   * 自增并发测试
   *
-  * @author created by zouyd on 2019-07-21 21:47
+  * @author created by Zeb-D on 2019-07-21 21:47
   */
 class IncrTest {
 

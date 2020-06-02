@@ -13,7 +13,7 @@ import scala.concurrent.duration._
 /**
   * 使用scala测试AkkademyDb
   *
-  * @author created by zouyd on 2019-07-21 22:36
+  * @author created by Zeb-D on 2019-07-21 22:36
   */
 class AkkademyDbSpec extends Matchers {
   implicit val system = ActorSystem()

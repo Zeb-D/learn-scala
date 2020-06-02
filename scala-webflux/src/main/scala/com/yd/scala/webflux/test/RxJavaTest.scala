@@ -7,7 +7,7 @@ import io.reactivex.{Observable, ObservableEmitter, ObservableOnSubscribe, Obser
 import org.slf4j.LoggerFactory
 
 /**
-  * @author created by zouyd on 2019-06-09 16:04
+  * @author created by Zeb-D on 2019-06-09 16:04
   */
 object RxJavaTest {
   private val Log = LoggerFactory.getLogger(RxJavaTest.getClass)
