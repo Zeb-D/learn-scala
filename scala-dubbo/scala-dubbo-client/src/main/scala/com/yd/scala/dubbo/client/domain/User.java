@@ -3,17 +3,18 @@ package com.yd.scala.dubbo.client.domain;
 
 import org.springframework.util.ReflectionUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author created by Zeb-D on 2019-05-09 14:53
  */
-public class User extends BaseDo {
+public class User implements Serializable {//extends BaseDo
     private Integer age;
     private String name;
-    private Byte sex;
-    private Integer[] list;
+//    private Byte sex;
+//    private Integer[] list;
 
     public Integer getAge() {
         return age;
@@ -31,21 +32,21 @@ public class User extends BaseDo {
         this.name = name;
     }
 
-    public Byte getSex() {
-        return sex;
-    }
+//    public Byte getSex() {
+//        return sex;
+//    }
+//
+//    public void setSex(Byte sex) {
+//        this.sex = sex;
+//    }
 
-    public void setSex(Byte sex) {
-        this.sex = sex;
-    }
-
-    public Integer[] getList() {
-        return list;
-    }
-
-    public void setList(Integer[] list) {
-        this.list = list;
-    }
+//    public Integer[] getList() {
+//        return list;
+//    }
+//
+//    public void setList(Integer[] list) {
+//        this.list = list;
+//    }
 
     public static void main(String[] args) {
         List list = new ArrayList<>();

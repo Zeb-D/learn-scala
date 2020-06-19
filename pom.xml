@@ -11,6 +11,8 @@
         <module>hello-scala</module>
         <module>scala-akka</module>
         <module>scala-grpc</module>
+        <module>scala-thrift</module>
+        <module>scala-dubbo</module>
         <module>scala-mqtt</module>
         <module>scala-spring-boot</module>
         <module>scala-webflux</module>
@@ -24,7 +26,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <scala.version>2.11.8</scala.version>
+        <scala.version>2.12.5</scala.version>
     </properties>
 
     <build>
@@ -41,14 +43,18 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <debug>true</debug>
-                    <encoding>${project.reporting.outputEncoding}</encoding>
-                    <fork>true</fork>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

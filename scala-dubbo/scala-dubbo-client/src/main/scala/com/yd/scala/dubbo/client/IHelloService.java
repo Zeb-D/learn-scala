@@ -9,7 +9,7 @@ public interface IHelloService {
 
     String sayHello(String uid);
 
-    User getUser(String uid);
+    User GetUser(String uid);
 
     void sleep(User user);
 

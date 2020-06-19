@@ -1,9 +1,11 @@
 package com.yd.scala.dubbo.client.domain;
 
+import java.io.Serializable;
+
 /**
  * @author created by Zeb-D on 2019-07-26 20:01
  */
-public class BaseDo {
+public class BaseDo implements Serializable {
     private Integer pageNo;
     private Integer pageSize;
 

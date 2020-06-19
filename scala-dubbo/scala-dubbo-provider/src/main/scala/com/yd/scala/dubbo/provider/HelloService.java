@@ -20,11 +20,11 @@ public class HelloService implements IHelloService {
     }
 
     @Override
-    public User getUser(String uid) {
+    public User GetUser(String uid) {
         User user = new User();
         user.setAge(new Random().nextInt());
         user.setName(uid);
-        user.setList(new Integer[]{11, 22, 3556});
+//        user.setList(new Integer[]{11, 22, 3556});
         return user;
     }
 
@@ -36,7 +36,7 @@ public class HelloService implements IHelloService {
 
     @Override
     public User getNoPara() {
-        return this.getUser("yd");
+        return this.GetUser("yd");
     }
 
     @Override
@@ -44,6 +44,6 @@ public class HelloService implements IHelloService {
         if (new Random().nextBoolean()) {
             throw new DubboClientException("xx");
         }
-        return getUser(uid);
+        return GetUser(uid);
     }
 }

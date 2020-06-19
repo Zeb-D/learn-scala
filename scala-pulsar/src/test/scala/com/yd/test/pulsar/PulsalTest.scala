@@ -7,7 +7,7 @@ import org.apache.pulsar.client.api.PulsarClient
 import org.junit.{Before, Test}
 
 /**
-  * @author created by zouyd on 2019-07-21 17:09
+  * @author created by Zeb-D on 2019-07-21 17:09
   */
 class PulsalTest {
   var client: PulsarClient = null
@@ -32,7 +32,7 @@ class PulsalTest {
     val producer = client.newProducer.topic("my-topic").create
 
     // You can then send messages to the broker and topic you specified:
-    val msgId = producer.send("My message -2".getBytes(Charset.forName("UTF-8")))
-    println(new String(msgId.toByteArray))
+    val msgId = producer.send("My message -1".getBytes(Charset.forName("UTF-8")))
+    println(new String(msgId.toString))
   }
 }
