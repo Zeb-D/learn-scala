@@ -38,9 +38,9 @@
     </appender>
 
     <appender name="REPORT_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_HOME}/REPORT/tuya-api-gateway_report.log</file>
+        <file>${LOG_HOME}/REPORT/yd-api-gateway_report.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_HOME}/REPORT/tuya-api-gateway_report.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/REPORT/yd-api-gateway_report.log.%d{yyyy-MM-dd}</fileNamePattern>
             <maxHistory>7</maxHistory>
         </rollingPolicy>
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -50,9 +50,9 @@
 
     <appender name="REPORT_LOG_TEMP"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_HOME}/TEMP/tuya-api-gateway_temp.log</file>
+        <file>${LOG_HOME}/TEMP/yd-api-gateway_temp.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_HOME}/TEMP/tuya-api-gateway_temp.log.%d{yyyy-MM-dd}
+            <fileNamePattern>${LOG_HOME}/TEMP/yd-api-gateway_temp.log.%d{yyyy-MM-dd}
             </fileNamePattern>
             <maxHistory>1</maxHistory>
         </rollingPolicy>
@@ -62,9 +62,9 @@
     </appender>
 
     <appender name="HTTP_404_CODE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_HOME}/ACCESSS_LOG/tuya-api-gateway_404_report.log</file>
+        <file>${LOG_HOME}/ACCESSS_LOG/yd-api-gateway_404_report.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_HOME}/ACCESSS_LOG/tuya-api-gateway_404_report.log.%d{yyyy-MM-dd}</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/ACCESSS_LOG/yd-api-gateway_404_report.log.%d{yyyy-MM-dd}</fileNamePattern>
             <maxHistory>7</maxHistory>
         </rollingPolicy>
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -98,7 +98,7 @@
         <appender-ref ref="HTTP_404_CODE_LOG" />
     </logger>
 
-    <logger name="com.tuya" level="DEBUG" additivity="false">
+    <logger name="com.yd" level="DEBUG" additivity="false">
         <appender-ref ref="INFO_FILE"/>
         <appender-ref ref="CONSOLE"/>
     </logger>

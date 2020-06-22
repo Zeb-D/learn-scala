@@ -100,9 +100,9 @@ class HighLevelElasticClient extends InitializingBean {
   }
 
   def search(multiSearchRequest: MultiSearchRequest): MultiSearchResponse = {
-    try
+    try {
       return client.msearch(multiSearchRequest, RequestOptions.DEFAULT)
-    catch {
+    } catch {
       case e: Exception =>
         logger.error("es search method occur an exception.multiSearchRequest:{}, multiSearchRequest:{},e:{}", multiSearchRequest, multiSearchRequest, e)
     }
