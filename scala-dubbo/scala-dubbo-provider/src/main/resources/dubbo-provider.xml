@@ -8,4 +8,5 @@
  http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <dubbo:service interface="com.yd.scala.dubbo.client.IHelloService" ref="helloService"/>
+    <dubbo:service interface="com.yd.scala.dubbo.client.ITestService" ref="testService"/>
 </beans>

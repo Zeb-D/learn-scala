@@ -17,8 +17,13 @@
         <module>scala-spring-boot</module>
         <module>scala-webflux</module>
         <module>scala-benchmark</module>
+        <module>scala-http-test</module>
         <module>scala-tuya-api</module>
         <module>scala-pulsar</module>
+        <module>scala-cache-threadlocal</module>
+        <module>scala-fastjson-2-jackson</module>
+<!--        <module>scala-class-check</module>-->
+<!--        <module>scala-api-doc</module>-->
     </modules>
 
     <properties>
@@ -52,6 +57,62 @@
                         <phase>compile</phase>
                         <goals>
                             <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <!--先进入该项目进行mvn clean install-->
+                <groupId>com.yd.scala</groupId>
+                <artifactId>scala-class-check</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <configuration>
+                    <excludeGroupIds>
+                        <excludeGroupId>org.aspectj</excludeGroupId>
+                        <excludeGroupId>io.netty</excludeGroupId>
+                        <excludeGroupId>aopalliance</excludeGroupId>
+                        <excludeGroupId>xpp3</excludeGroupId>
+                        <excludeGroupId>org.springframework</excludeGroupId>
+                        <excludeGroupId>org.slf4j</excludeGroupId>
+                        <excludeGroupId>log4j</excludeGroupId>
+                    </excludeGroupIds>
+                    <excludeClassPrefixes>
+                        <excludeClassPrefix>edu.umd.cs.findbugs</excludeClassPrefix>
+                        <excludeClassPrefix>edu.umd.cs.findbugs</excludeClassPrefix>
+                        <excludeClassPrefix>javax.activation</excludeClassPrefix>
+                        <excludeClassPrefix>com.sun.activation</excludeClassPrefix>
+                        <excludeClassPrefix>org.codehaus.groovy</excludeClassPrefix>
+                    </excludeClassPrefixes>
+                    <failOnDuplicate>false</failOnDuplicate>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>class-check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <!--先进入该项目进行mvn clean install-->
+                <!-- mvn scala-api-doc:doc -Dtype=dubbo -->
+                <groupId>com.yd.scala</groupId>
+                <artifactId>scala-api-doc</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+                <configuration>
+                    <docName>API文档</docName>
+<!--                    <dubboPackages>-->
+<!--                        <dubboPackage>com.yd.http.testing.HttpClientFactory</dubboPackage>-->
+<!--                    </dubboPackages>-->
+<!--                    <exclusionPackages>-->
+<!--                        <exclusionPackage>com.yd.http.testing.HttpClientFactory</exclusionPackage>-->
+<!--                    </exclusionPackages>-->
+                    <modules>scala-benchmark</modules>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>doc</goal>
                         </goals>
                     </execution>
                 </executions>

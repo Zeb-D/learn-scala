@@ -1,8 +1,9 @@
-package com.yd.scala.hello
+package com.yd.scala.hello.config
 
 import org.springframework.context.annotation.{Bean, Configuration}
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory
 import org.springframework.data.redis.core.RedisTemplate
+import org.springframework.data.redis.serializer.{GenericJackson2JsonRedisSerializer, StringRedisSerializer}
 import redis.clients.jedis.JedisPoolConfig
 
 /**
@@ -10,9 +11,9 @@ import redis.clients.jedis.JedisPoolConfig
   */
 @Configuration
 class RedisConfig {
-  private var port = 7000
+  private var port = 6379
   private var hostName = "127.0.0.1"
-  private var passWord = "redisTest"
+  private var passWord = "yd_redis"
 
   @Bean
   def jedisPoolConfig: JedisPoolConfig = {
@@ -40,6 +41,8 @@ class RedisConfig {
   def redisTemplate(jedisConnectionFactory: JedisConnectionFactory): RedisTemplate[_, _] = {
     val redisTemplate = new RedisTemplate
     redisTemplate.setConnectionFactory(jedisConnectionFactory)
+    redisTemplate.setKeySerializer(new StringRedisSerializer()) //默认jdk序列化会出现
+    redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer())
     redisTemplate
   }
 

@@ -1,0 +1,73 @@
+@startuml
+participant C_User #Red/Pink
+participant 音箱设备 as YX
+participant 音箱厂商的app as App #Pink
+participant OEM_APP #Pink
+participant T_Cloud #Pink
+participant 云交易平台 as YJY_Mall  #Yellow/Pink
+
+alt #lightblue <color:Red> 前置接入动作</color>
+T_Cloud -> YJY_Mall:1、申请企业级账号，不止是企业钱包等；
+T_Cloud -> YJY_Mall:2、配置好商品
+T_Cloud -> YJY_Mall:3、渠道相关配置
+T_Cloud -> YJY_Mall:4、申请好访问应用的appId、key等不止这些信息
+T_Cloud -> YJY_Mall:5、应用配好对应的api、MQ 权限
+T_Cloud -> T_Cloud:6、T云维护通用接口，如地址、非授权等信息如商品列表等；
+T_Cloud -> T_Cloud: 注意：好限流相关操作，注意接口调用频率
+end
+
+alt <color:blue>音箱设备绑定到app，确保能发出指令</color>
+YX -> App: 1、将音箱配网到具体厂商的app
+OEM_APP -> App: 2、OEM_APP获取到对应音箱的授权使用，不同音箱绑定到OEM_APP方式不一样
+YX -> T_Cloud: <color:blue>3、确保音箱发送的指令能到语音网关如CP</color>
+end
+
+alt <color:Red>客户在OEM_APP完成京东账号的授权</color>
+OEM_APP -> T_Cloud: 00、请求T云是否当前tuya_uid有过正常的token
+T_Cloud -> OEM_APP: 01、返回授权关系标示；
+OEM_APP -> OEM_APP: 02、有授权关系则显示对应授权关系；
+C_User -> OEM_APP: 没有或把原来授权换掉 则唤起授权流程 \n 1、在OEM_APP打开京东授权账号页面：直接获取授权链接(有申请的应用key)，账号密码成功则返回授权code
+OEM_APP -> T_Cloud: 2、app把重定向返回的code给T云
+T_Cloud -> YJY_Mall: 3、通过code获取到用户的token，返回给T云
+T_Cloud -> T_Cloud: 4、维护tuya_uid与token的关系、根据token有效期进行token管理(采用定时维护)
+T_Cloud -> T_Cloud: 5、异步MQ维护token值，用户进行账号修改可能会导致授权关系失效；失效则去除授权关系
+end
+
+alt <color:blue>客户商品查询（非必须，有些地方可以写死商品code）</color>
+C_User -> YX: 1、说些与商品相关的话，如查询商品列表、某个商品详情等非授权等话语
+YX -> T_Cloud: 2、指令解析，指令投递到语音网关；
+T_Cloud -> T_Cloud: 3、指令策略处理，识别电商业务逻辑；
+T_Cloud -> YJY_Mall: 4、非授权接口，采用本地云模糊搜索出对应的精确的商品；
+T_Cloud -> YX: 5、将查询结果告诉音箱进行播报，给用户听
+YX -> C_User: 6、用户精确选择返回的音箱的词，或者用户直接下一步操作
+end
+
+alt #lightblue <color:Red>客户走下单流程</color>
+C_User -> YX: 1、购买某某商品，会带上购买数量
+YX -> T_Cloud: 2、指令解析，指令投递到语音网关；指令策略处理，识别电商业务逻辑；
+T_Cloud -> T_Cloud: 3、接下来使用客户的token走下面流程，\n 且生成一次业务流水Id(可作为业务订单id)，方便后续的语音进行流程绑定
+T_Cloud -> YJY_Mall: 4、判断商品是否有库存
+T_Cloud -> YX: 4a、无库存告诉音箱播报，下单流程 结束
+T_Cloud -> T_Cloud: 4b、有库存，则判断客户以前是否说过 收获地址
+T_Cloud -> YX: 4b1、播报客户以前的地址，让客户确认
+T_Cloud -> YX: 4b2、播报客户说收获地址
+YX -> T_Cloud: 5、记录客户的收获地址，流水Id绑定收获地址，注意地址标准格式
+
+T_Cloud -> T_Cloud: 6、判断该商品skuId，配置的配送方式+运费，\n如果只有一个配送商，就不需要用户二次选择，直接绑定
+T_Cloud -> YX: 6a、播报客户选择配送运营商+运费的短语，给客户选择，不超过N个配送商
+C_User -> YX: 6aa、客户选择配送方式
+YX -> T_Cloud: 6b、记录客户选择的配送方式，流水Id绑定配送方式
+T_Cloud -> YJY_Mall: 7、计算当前订单支付价格
+T_Cloud -> YX: 8、用户订单确认，播报订单相关信息 口语
+C_User -> YX: 8a、客户确认
+YX -> T_Cloud: 8b、客户确认指令
+T_Cloud -> YJY_Mall: 8c、生成一个提单，使用流水Id带上对应用户选择数据
+T_Cloud -> YX: 8d、提示用户打开OEM_APP，找到订单页进行支付；\n <color:Red>注意当前支付方式没有免密支持，需要用户人肉支付</color>
+OEM_APP -> T_Cloud: 8da、获取订单一些信息
+OEM_APP -> OEM_APP: 8da、，app唤起支付方式组件，<color:Red>此处需要确定对方sdk是否有支付组件支持；</color>
+C_User -> OEM_APP: 8db、用户人肉支付
+OEM_APP -> YJY_Mall: 8dc、收到支付，订单更新，订单MQ投递
+YJY_Mall -> T_Cloud: 8dd、更新本地云订单状态
+end
+
+@enduml

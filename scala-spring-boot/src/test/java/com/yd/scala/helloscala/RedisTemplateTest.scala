@@ -26,7 +26,7 @@ class RedisTemplateTest extends BaseTest {
 
   @Test
   def TestUser(): Unit = {
-    val u: UserService = new UserImpl
+    val u: UserTestService = new UserImpl
     val (name, err) = u.SayHello("Yd")
     println(s"$name,$err")
     println(u.SayHello("Yd"))
@@ -70,15 +70,16 @@ class RedisTemplateTest extends BaseTest {
     val (aa, bb) = value
     println(aa.asInstanceOf[String], "->", bb)
 
-//    val ru = scala.reflect.runtime.universe
-//    val m = ru.runtimeMirror(getClass.getClassLoader)
-//    val classPerson = ru.typeOf[Person].typeSymbol.asClass
-//    val cm = m.reflectClass(classPerson)
-//    val ctor = ru.typeOf[Person].declaration(ru.nme.CONSTRUCTOR).asMethod
-//    val ctorm = cm.reflectConstructor(ctor)
-//    val p = ctorm("Mike")
+    //    val ru = scala.reflect.runtime.universe
+    //    val m = ru.runtimeMirror(getClass.getClassLoader)
+    //    val classPerson = ru.typeOf[Person].typeSymbol.asClass
+    //    val cm = m.reflectClass(classPerson)
+    //    val ctor = ru.typeOf[Person].declaration(ru.nme.CONSTRUCTOR).asMethod
+    //    val ctorm = cm.reflectConstructor(ctor)
+    //    val p = ctorm("Mike")
   }
 }
+
 class Person {
   var name: String = ""
 
@@ -88,7 +89,7 @@ class Person {
   }
 }
 
-class UserImpl extends UserService {
+class UserImpl extends UserTestService {
   override def SayHello(name: String): (String, Int) = {
     return (s"hello $name", 112);
   }
@@ -100,7 +101,7 @@ class User(name: String, age: Int) extends Person(name) with Serializable {
 }
 
 
-trait UserService {
+trait UserTestService {
   def SayHello(name: String): (String, Int)
 }
 

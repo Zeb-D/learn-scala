@@ -1,7 +1,6 @@
 package com.yd.scala.hello.serializer;
 
-import com.baomidou.mybatisplus.core.toolkit.IOUtils;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.SerializationException;
 

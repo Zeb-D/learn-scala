@@ -7,6 +7,8 @@ import com.yd.scala.dubbo.client.domain.User;
  */
 public interface IHelloService {
 
+    void sayHello();
+
     String sayHello(String uid);
 
     User GetUser(String uid);

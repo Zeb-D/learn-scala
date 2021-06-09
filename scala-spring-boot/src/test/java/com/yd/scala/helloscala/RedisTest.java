@@ -1,5 +1,6 @@
 package com.yd.scala.helloscala;
 
+import com.yd.scala.hello.limit.RedisLimit;
 import org.junit.Test;
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -22,6 +23,12 @@ public class RedisTest extends BaseTest {
         System.out.println(redisTemplate.opsForValue().get("test:scala"));
     }
 
+    @Test
+    public void testRedisLimit() {
+        RedisLimit.TestArgs();
+        boolean result1 = RedisLimit.createLimit("aa1", 2, 60, redisTemplate);
+        System.out.println(result1);
+    }
 
     public static class User implements Serializable {
         private static final long serialVersionUID = 1;

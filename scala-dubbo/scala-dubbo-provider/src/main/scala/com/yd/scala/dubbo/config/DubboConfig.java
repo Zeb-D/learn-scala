@@ -2,6 +2,7 @@ package com.yd.scala.dubbo.config;
 
 import org.apache.dubbo.config.ApplicationConfig;
 import org.apache.dubbo.config.ProtocolConfig;
+import org.apache.dubbo.config.ProviderConfig;
 import org.apache.dubbo.config.RegistryConfig;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -29,7 +30,7 @@ public class DubboConfig {
     private String registryProtocol;
     @Value("${dubbo.server.protocolName:dubbo}")
     private String protocolName;
-    @Value("${dubbo.server.protocolPort:20880}")
+    @Value("${dubbo.server.protocolPort:20881}")
     private Integer protocolPort;
 
     @Bean
@@ -54,6 +55,14 @@ public class DubboConfig {
         protocolConfig.setName(protocolName);
         protocolConfig.setPort(protocolPort);
         return protocolConfig;
+    }
+
+    @Bean
+    public ProviderConfig providerConfig(){
+        ProviderConfig providerConfig = new ProviderConfig();
+        providerConfig.setDynamic(true);
+        providerConfig.setTimeout(6000);
+        return providerConfig;
     }
 
 }
