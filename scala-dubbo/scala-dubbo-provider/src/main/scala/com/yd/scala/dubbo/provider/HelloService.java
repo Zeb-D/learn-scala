@@ -3,7 +3,6 @@ package com.yd.scala.dubbo.provider;
 import com.yd.scala.dubbo.client.IHelloService;
 import com.yd.scala.dubbo.client.domain.User;
 import com.yd.scala.dubbo.client.exception.DubboClientException;
-import org.springframework.stereotype.Service;
 
 import java.util.Random;
 import java.util.UUID;
@@ -23,8 +22,8 @@ public class HelloService implements IHelloService {
         System.out.println(aa);
         ExecutorService poolExecutor = Executors.newFixedThreadPool(1);
         poolExecutor.submit(() -> System.out.println(UUID.randomUUID().toString()));
-
         //假设系统在执行该方法1s后，触发了jvm GC, 请问哪个对象会被回收
+        System.gc();
     }
 
     @Override

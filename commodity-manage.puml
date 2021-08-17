@@ -1,0 +1,22 @@
+@startuml
+participant FrontEnd #Red/Pink
+participant SaaS_Mall
+participant SaaS_Backend #Pink
+
+alt #lightblue <color:Red> 商品创建</color>
+FrontEnd -> FrontEnd:   1、获取 商品类目、有效节目信息 div渲染
+FrontEnd -> FrontEnd:   2、参数校验，如字段类型、长度等
+FrontEnd -> SaaS_Mall:  3、提交-商品创建-请求
+SaaS_Mall -> SaaS_Backend:  4、校验节目状态，审核通过
+SaaS_Mall -> SaaS_Mall: 4、保存商品表、商品sku表，发送商品状态事件
+SaaS_Mall -> FrontEnd:  5、返回商品相关信息
+end
+
+alt <color:blue>商品操作</color>
+FrontEnd -> FrontEnd: 1、操作按钮根据角色来页面渲染，\n如设计师、管理员
+FrontEnd -> SaaS_Mall: 2、提交商品相关操作，如发布、上下架、删除等
+SaaS_Mall -> SaaS_Backend: 3、校验saas用户角色资源操作；OK则继续，否则报错
+SaaS_Mall -> SaaS_Mall: 4、执行对应操作策略，发送对应商品状态事件
+end
+
+@enduml

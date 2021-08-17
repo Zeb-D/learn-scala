@@ -12,8 +12,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <dubbo>2.7.4.7.TUYA</dubbo><!--2.7.4-->
         <dubbo.ext>3.0.6</dubbo.ext>
+        <dubbo>2.7.3</dubbo><!--2.7.4-->
     </properties>
 
     <dependencies>
