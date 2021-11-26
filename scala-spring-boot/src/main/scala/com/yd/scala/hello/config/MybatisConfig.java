@@ -65,7 +65,8 @@ public class MybatisConfig {
         mybatisSqlSessionFactoryBean.setMapperLocations(resolveMapperLocations("classpath:/mybatis/*.xml"));
         PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
         paginationInterceptor.setLimit(1000);
-        mybatisSqlSessionFactoryBean.setPlugins(new Interceptor[]{paginationInterceptor});
+        MybatisSqlPrintInterceptor sqlPrintInterceptor = new MybatisSqlPrintInterceptor();
+        mybatisSqlSessionFactoryBean.setPlugins(new Interceptor[]{paginationInterceptor, sqlPrintInterceptor});
         MybatisConfiguration configuration = new MybatisConfiguration();
         configuration.setDatabaseId("mysql");
         configuration.setMapUnderscoreToCamelCase(true);

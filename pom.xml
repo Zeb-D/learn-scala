@@ -22,8 +22,8 @@
         <module>scala-pulsar</module>
         <module>scala-cache-threadlocal</module>
         <module>scala-fastjson-2-jackson</module>
-<!--        <module>scala-class-check</module>-->
-<!--        <module>scala-api-doc</module>-->
+        <module>scala-class-check</module>
+        <module>scala-api-doc</module>
     </modules>
 
     <properties>
