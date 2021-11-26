@@ -1,0 +1,305 @@
+{
+    "regionSync": {
+        "1": {
+            "version": 1,
+            "key": "sdfsdfsadfsdfs#!",
+            "iv": "jkps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        }
+    },
+    "test": {
+        "1": {
+            "version": 1,
+            "key": "sdfsdfsadfsdfs#!",
+            "iv": "jkps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "2": {
+            "version": 2,
+            "key": "09832904nc@#$xua",
+            "iv": "sdfsdf12dfsdfs#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "3": {
+            "version": 3,
+            "key": "3dfsdfsadfsdfs#!",
+            "iv": "3kps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "4": {
+            "version": 4,
+            "key": "4dfsdfsadfsdfs#!",
+            "iv": "4kps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "5": {
+            "version": 5,
+            "key": "5dfsdfsadfsdfs#!",
+            "iv": "5kps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "6": {
+            "version": 6,
+            "key": "6dfsdfsadfsdfs#!",
+            "iv": "6kps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "7": {
+            "version": 7,
+            "key": "7dfsdfsadfsdfs#!",
+            "iv": "7kps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "8": {
+            "version": 8,
+            "key": "8dfsdfsadfsdfs#!",
+            "iv": "8kps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "9": {
+            "version": 9,
+            "key": "9dfsdfsadfsdfs#!",
+            "iv": "9kps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "10": {
+            "version": 10,
+            "key": "10fsdfsadfsdfs#!",
+            "iv": "10ps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "11": {
+            "version": 11,
+            "key": "11fsdfsadfsdfs#!",
+            "iv": "11ps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "12": {
+            "version": 12,
+            "key": "12fsdfsadfsdfs#!",
+            "iv": "12ps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "13": {
+            "version": 13,
+            "key": "13fsdfsadfsdfs#!",
+            "iv": "13ps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "14": {
+            "version": 14,
+            "key": "14fsdfsadfsdfs#!",
+            "iv": "14ps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "15": {
+            "version": 15,
+            "key": "15fsdfsadfsdfs#!",
+            "iv": "15ps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "16": {
+            "version": 16,
+            "key": "16fsdfsadfsdfs#!",
+            "iv": "16ps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "17": {
+            "version": 17,
+            "key": "17fsdfsadfsdfs#!",
+            "iv": "17ps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        }
+        },
+        "test1": {
+        "1": {
+            "version": 1,
+            "key": "sdfsdfsadfsdfs#!",
+            "iv": "jkps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "2": {
+            "version": 2,
+            "key": "09832904nc@#$xua",
+            "iv": "sdfsdf12dfsdfs#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "3": {
+            "version": 3,
+            "key": "3dfsdfsadfsdfs#!",
+            "iv": "3kps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "4": {
+            "version": 4,
+            "key": "4dfsdfsadfsdfs#!",
+            "iv": "4kps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "5": {
+            "version": 5,
+            "key": "5dfsdfsadfsdfs#!",
+            "iv": "5kps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "6": {
+            "version": 6,
+            "key": "6dfsdfsadfsdfs#!",
+            "iv": "6kps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "7": {
+            "version": 7,
+            "key": "7dfsdfsadfsdfs#!",
+            "iv": "7kps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "8": {
+            "version": 8,
+            "key": "8dfsdfsadfsdfs#!",
+            "iv": "8kps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "9": {
+            "version": 9,
+            "key": "9dfsdfsadfsdfs#!",
+            "iv": "9kps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "10": {
+            "version": 10,
+            "key": "10fsdfsadfsdfs#!",
+            "iv": "10ps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "11": {
+            "version": 11,
+            "key": "11fsdfsadfsdfs#!",
+            "iv": "11ps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "12": {
+            "version": 12,
+            "key": "12fsdfsadfsdfs#!",
+            "iv": "12ps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "13": {
+            "version": 13,
+            "key": "13fsdfsadfsdfs#!",
+            "iv": "13ps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "14": {
+            "version": 14,
+            "key": "14fsdfsadfsdfs#!",
+            "iv": "14ps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "15": {
+            "version": 15,
+            "key": "15fsdfsadfsdfs#!",
+            "iv": "15ps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "16": {
+            "version": 16,
+            "key": "16fsdfsadfsdfs#!",
+            "iv": "16ps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        }
+    },
+    "test2": {
+        "255": {
+            "version": 255,
+            "key": "5dfsdfsadfsdfs#!",
+            "iv": "jkps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "256": {
+            "version": 256,
+            "key": "6dfsdfsadfsdfs#!",
+            "iv": "jkps+_!~%^^*()#!",
+            "algorithm": "AES",
+            "mode":"CFB",
+            "padding":"NOPADDING"
+        },
+        "257": {
+            "version": 257,
+            "key": "7dfsdfsadfsdfs#!",
+            "algorithm": "AES",
+            "mode":"ECB",
+            "padding":"PKCS5Padding"
+        }
+    }
+}
