@@ -2,10 +2,10 @@ package com.yd.dubbo.test;
 
 import com.yd.scala.dubbo.filter.VarPassFilter;
 import com.yd.scala.dubbo.filter.YdFilter;
+import org.apache.dubbo.common.URL;
 import org.apache.dubbo.common.compiler.Compiler;
 import org.apache.dubbo.common.extension.AdaptiveClassCodeGenerator;
 import org.apache.dubbo.common.extension.ExtensionLoader;
-import org.apache.dubbo.rpc.Protocol;
 import org.junit.Test;
 
 
@@ -18,7 +18,7 @@ public class ExtensionLoaderTest {
     @Test
     public void ExtensionLoaderTest() {
         ExtensionLoader<YdFilter> filterExtensionLoader = ExtensionLoader.getExtensionLoader(YdFilter.class);
-        System.out.println(ExtensionLoader.getExtensionLoader(Protocol.class).getAdaptiveExtension());
+
         System.out.println(filterExtensionLoader.hasExtension("permission"));
         String varPaas = filterExtensionLoader.getExtensionName(VarPassFilter.class);
         System.out.println(varPaas);
@@ -30,6 +30,20 @@ public class ExtensionLoaderTest {
         System.out.println(filterExtensionLoader.getExtension("varpass"));
         System.out.println(createAdaptiveExtensionClass(YdFilter.class, "varpass"));
 
+    }
+
+    @Test
+    public void TestActivateExtension() {
+        URL url = URL.valueOf("dubbo://172.16.46.62:21913/com.xxx.application.user.hospitality.IHospitalityCodeService");
+        //@Activate()自动会带上，只要group没限制
+        url = url.addParameter("value1", "anything");
+        //添加varpass实例，去掉c实例
+        url = url.addParameter("yd.filter", "varpass,-c");
+        System.out.println(ExtensionLoader.getExtensionLoader(YdFilter.class).getActivateExtension(url, "yd.filter", "group1"));
+        System.out.println(ExtensionLoader.getExtensionLoader(YdFilter.class).getActivateExtension(url, "yd.filter", "group"));
+        System.out.println(ExtensionLoader.getExtensionLoader(YdFilter.class).getActivateExtension(url, ""));
+        System.out.println(ExtensionLoader.getExtensionLoader(YdFilter.class).getActivateExtension(url, "value", "group1"));
+        System.out.println(ExtensionLoader.getExtensionLoader(YdFilter.class).getActivateExtension(url, "value", "group"));
     }
 
     private Class<?> createAdaptiveExtensionClass(Class<?> type, String cachedDefaultName) {

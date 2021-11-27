@@ -1,2 +1,3 @@
 permission=com.yd.scala.dubbo.filter.InternPermissionFilter
 varpass=com.yd.scala.dubbo.filter.VarPassFilter
+a=com.yd.scala.dubbo.filter.aFilter
