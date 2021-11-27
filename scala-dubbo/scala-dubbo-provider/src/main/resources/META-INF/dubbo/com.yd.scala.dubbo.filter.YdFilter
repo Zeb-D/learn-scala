@@ -1,0 +1,2 @@
+permission=com.yd.scala.dubbo.filter.InternPermissionFilter
+varpass=com.yd.scala.dubbo.filter.VarPassFilter
