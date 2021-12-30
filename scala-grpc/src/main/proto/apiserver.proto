@@ -1,0 +1,93 @@
+syntax = "proto3"; //指定proto版本
+package apiserver;
+// import "google/protobuf/timestamp.proto";
+// 定义Job描述结构体
+message Job{
+    string uuid=1;  //Job唯一ID
+    string devID=2; //Job对应设备ID
+    string name=3;  //Job名称
+    int32 priority=4;   //触发优先级
+    int32 type=5; //定时类型 1:延时任务; 2:定时任务，周期间隔性执行指定次数 3:复杂cron任务
+    JobAction  action=6;    //执行动作描述, json格式
+    int64 firstTrigTime=7;  //首次触发时间, 时间戳
+    int64 finishTime=8;  //任务结束时间, 时间戳
+    int64 retries=9;
+    int64 intervalTime=10; //单位：s
+    string timeZone=11;    //时区
+    string userID=12;
+    string bizType=13;
+    int32 runMode=14; // 1-云端 2-设备
+    string parentID=15;
+    repeated string tags=16;
+    int64 delaySeconds=17; //单位：s
+    string CronSchedule=18; //cron表达式
+}
+
+//定义Job具体action
+//message {
+//    string instruct=1;
+//    string type=2;
+//    string dps=3;
+//}
+//定义版本请求结构
+message VersionRequest{
+    string requestID=1;
+}
+//定义Job请求结构
+message JobRequest{
+    string requestID=1;
+    string jobActionType=2; // 1.MQ 2.MQTT 3.API CALLBACK 4. SIGMA_FACADE grpc
+    Job job=3;
+}
+//定义Job请求返回结构
+message JobResponse{
+    string jobActionType =1;
+    string jobID=2;
+    string jobMeta=3;
+}
+//定义job action
+message JobAction{
+    string mode=1;      //include: "MQ", "MQTT", "API", "SIGMA_FACADE_GRPC"
+    JobActionMQ  mq=2;
+    JobActionMQTT mqtt=3;
+    JobActionAPI api=4;
+}
+
+message JobActionMQ{
+    string topic=1;
+    string message=2;
+}
+message JobActionMQTT{
+}
+message JobActionAPI{
+}
+//定义普通请求响应结构
+message APIResponse{
+    string requestID=1;
+    bool success=2;
+    string message=3;
+    repeated string jobs=4;
+}
+//定义SigmaX APIServer服务
+service ApiServer{
+    // 定义服务中的方法
+    // 版本查询
+    rpc GetVersion(VersionRequest) returns (APIResponse){}
+    // Job操作
+    rpc AddJob(JobRequest) returns (APIResponse){}
+    rpc AddDelayJob(JobRequest) returns (APIResponse){}
+    rpc AddCronJob(JobRequest) returns (APIResponse){}
+    rpc ListJobs(JobRequest) returns (APIResponse){}
+    rpc GetJobByID(JobRequest) returns (APIResponse){}
+    rpc GetJobByUserID(JobRequest) returns (APIResponse){}
+    rpc GetJobByDevID(JobRequest) returns (APIResponse){}
+    rpc GetJobs(JobRequest) returns (APIResponse){}
+    rpc DeleteJobByID(JobRequest) returns (APIResponse){}
+    rpc DeleteJobByIDs(JobRequest) returns (APIResponse){}
+    rpc DeleteJobByDevID(JobRequest) returns (APIResponse){}
+    rpc DeleteJobByUserID(JobRequest) returns (APIResponse){}
+    rpc UpdateJobByID(JobRequest) returns (APIResponse){}
+    rpc QueryJobByID(JobRequest) returns (APIResponse){}
+    rpc StopJobByID(JobRequest) returns (APIResponse){}
+    rpc StartJobByID(JobRequest) returns (APIResponse){}
+}

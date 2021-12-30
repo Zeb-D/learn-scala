@@ -1,16 +1,15 @@
-package com.yd.scala.helloscala;
+package com.yd;
 
-import org.junit.Test;
+/**
+ * @author created by Zeb-D on 2019-08-19 11:39
+ */
+
+import com.yd.scala.grpc.GrpcApp;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
-public class HelloScalaApplicationTests {
-
-	@Test
-	public void contextLoads() {
-	}
-
+@SpringBootTest(classes = GrpcApp.class)
+public class BaseTest {
 }

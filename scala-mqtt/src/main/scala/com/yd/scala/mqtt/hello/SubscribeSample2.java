@@ -8,15 +8,15 @@ import java.nio.charset.StandardCharsets;
 /**
  * 订阅端
  */
-public class SubscribeSample {
+public class SubscribeSample2 {
 
     public static void main(String[] args) throws MqttException {
-        String topic = "cloud/token/in/3729d394c3c537f830f07b8e04c6e8c3_1";
+        String topic = "cloud/token/in/8cddd8115c7e8d0fd8253a9ab6a2a6fa";
         int qos = 1;
-        String broker = "ssl://m1-cn.wgine.com:8883";
-        String userName = "cloud_3729d394c3c537f830f07b8e04c6e8c3_1";
-        String password = "4d7753f255767cae4e59e1c36d41548c";
-        String clientId = "cloud_1e880e29b2be9c085fbca78595fb3ed4";
+        String broker = "tcp://m2-cn.wgine.com:1883";
+        String userName = "cloud_8cddd8115c7e8d0fd8253a9ab6a2a6fa";
+        String password = "1893f705127e974fb43bacad3c2f6183";
+        String clientId = "cloud_fe49c835798058ab03c9d9213ab1c513";
         try {
             // host为主机名，test为clientid即连接MQTT的客户端ID，一般以客户端唯一标识符表示，MemoryPersistence设置clientid的保存形式，默认为以内存保存
             MqttClient client = new MqttClient(broker, clientId, new MemoryPersistence());
