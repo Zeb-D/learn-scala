@@ -20,6 +20,17 @@ import java.util.*;
 public class HttpClientV2 {
     protected static CloseableHttpClient httpClient = HttpClientFactory.getInstance().getDefaultClient();
 
+    public static void main(String[] args) throws IOException {
+//        for (int i = 0; i < 40; i++) {
+//            System.out.println(doRequest());
+//        }
+//        System.out.println(doRequest());
+//        System.out.println(doRequest());
+//        System.out.println(xxx);
+//        System.out.println(name(new Random()));
+        System.out.println(getIdNo(true));
+    }
+
     //所有的请求最终执行
     public static final String doRequest() throws IOException {
         String url = "https://host:port/api/weShop/confirmInsure.do";
@@ -218,12 +229,12 @@ public class HttpClientV2 {
 
     // 360731、362132
     public static int[] cc() {
-        return new int[]{360731,362132};
+        return new int[]{360731, 362132};
     }
 
     public static String getIdNo(String birth, boolean male) {
         StringBuilder sb = new StringBuilder();
-        Random random = new Random();
+        Random random = new Random(System.currentTimeMillis());
         // 360731、362132
         int value = random.nextInt(cities.length);
         sb.append(cities[value]);
@@ -351,15 +362,5 @@ public class HttpClientV2 {
         requestBase.setEntity(strinEntity);
     }
 
-    public static void main(String[] args) throws IOException {
-        for (int i = 0; i < 40; i++) {
-            System.out.println(doRequest());
-        }
-//        System.out.println(doRequest());
-//        System.out.println(doRequest());
-//        System.out.println(xxx);
-//        System.out.println(name(new Random()));
-//        System.out.println(getIdNo(true));
-    }
 }
 

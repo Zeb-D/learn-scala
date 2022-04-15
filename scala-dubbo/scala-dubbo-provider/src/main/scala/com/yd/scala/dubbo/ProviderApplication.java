@@ -14,7 +14,7 @@ import org.springframework.context.annotation.ImportResource;
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, RedisAutoConfiguration.class, RedisRepositoriesAutoConfiguration.class})
 @DubboComponentScan("com.yd.scala.dubbo")
 //@EnableAspectJAutoProxy(proxyTargetClass = true)
-@ImportResource("classpath:dubbo-provider.xml")
+//@ImportResource("classpath:dubbo-provider.xml")
 public class ProviderApplication {
     public static void main(String[] args) {
         SpringApplication.run(ProviderApplication.class, args);

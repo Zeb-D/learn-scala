@@ -33,6 +33,7 @@ public class AtomicLongFieldUpdaterTest {
     }
 
     public static void main(String[] args) throws Exception {
+        //System.out.println(Unsafe.getUnsafe()); //为什么会报错？就因为是AppClassLoader 加载的？
         //输出filed偏移量
         System.out.println(UNSAFE.objectFieldOffset(AtomicLongFieldUpdaterTest.class.getDeclaredField("a")));
         System.out.println(UNSAFE.objectFieldOffset(AtomicLongFieldUpdaterTest.class.getDeclaredField("cachedPreparedStatementCount")));

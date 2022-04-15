@@ -1,6 +1,7 @@
 package com.yd.scala.dubbo.provider;
 
 import com.yd.scala.dubbo.client.IHelloService;
+import com.yd.scala.dubbo.client.domain.QueryVO;
 import com.yd.scala.dubbo.client.domain.User;
 import com.yd.scala.dubbo.client.exception.DubboClientException;
 
@@ -45,6 +46,11 @@ public class HelloService implements IHelloService {
     public void sleep(User user) {
         System.out.println("=======>" + user);
         System.out.println("sleep<==========");
+    }
+
+    @Override
+    public Boolean del1(QueryVO query) {
+        return new Random().nextBoolean();
     }
 
     @Override

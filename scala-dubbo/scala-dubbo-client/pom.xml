@@ -12,6 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <org.projectlombok.version>1.18.8</org.projectlombok.version>
     </properties>
 
     <dependencies>
@@ -26,6 +27,11 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.72</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${org.projectlombok.version}</version>
         </dependency>
     </dependencies>
 

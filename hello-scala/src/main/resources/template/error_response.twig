@@ -1,0 +1,22 @@
+{
+  "requestId": "{{messageId}}",
+  "payload": {
+    {% if intent == "control" %}
+      "commands": [
+        {
+          "ids": [
+            "{{uid}}"
+          ],
+          "status": "ERROR",
+          "errorCode": "userNotFound"
+        }
+      ]
+    {% endif %}
+    {% if intent == "query" %}
+      "{{uid}}": {
+        "errorCode": "userNotFound",
+        "status": "ERROR"
+      }
+    {% endif %}
+  }
+}

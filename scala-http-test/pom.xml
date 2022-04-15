@@ -14,6 +14,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.java-websocket</groupId>
+            <artifactId>Java-WebSocket</artifactId>
+            <version>1.4.0</version>
+        </dependency>
+        <dependency>
             <!--AtxMarkdownToc.newInstance().genTocFile(path).charset("UTF-8")
                             .write(true)
                             .subTree(true);-->

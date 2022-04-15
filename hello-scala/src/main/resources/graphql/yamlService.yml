@@ -1,0 +1,16 @@
+compositions:
+  - id: liangxin.device.log.sdk
+    # endpoint 表示业务所属端点；
+    # 1. 用于自动生成服务代码时，为Class类名；
+    service: com.yd.scala.hello.sdk.http.IGithubHttpSdkService
+    # 类方法名
+    method: userInfo
+    variables:
+      clientId: githubAccessIdGoesHere
+      appVersion: 2.0
+      # Resolvers 编排请求列表及顺序
+    resolvers:
+      - refid: getdevice
+        fields: [ 'id', 'name' ]
+      - refid: getlog
+        fields: [ 'code','value','event_time' ]

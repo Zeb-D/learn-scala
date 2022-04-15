@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:yda="http://www.yda.com/schema/yda"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.yda.com/schema/yda http://www.yda.com/schema/yda.xsd">
+
+    <yda:protocol id="email" class="com.yd.scala.hello.handler.protocol.DefaultProtocol"/>
+    <yda:protocol id="phone" class="com.yd.scala.hello.handler.protocol.PhoneProtocol"/>
+
+    <!--对返回值，打码 -->
+    <yda:cluster id="pwd" protocol="phone">
+        <yda:path path="$.pwd" protocol="phone"/>
+    </yda:cluster>
+
+</beans>

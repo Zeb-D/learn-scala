@@ -1,5 +1,6 @@
 package com.yd.scala.dubbo.client;
 
+import com.yd.scala.dubbo.client.domain.QueryVO;
 import com.yd.scala.dubbo.client.domain.User;
 
 /**
@@ -14,6 +15,8 @@ public interface IHelloService {
     User GetUser(String uid);
 
     void sleep(User user);
+
+    Boolean del1(QueryVO query);
 
     User getNoPara();
 

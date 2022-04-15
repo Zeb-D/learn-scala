@@ -1,5 +1,6 @@
 package com.yd.scala.hello;
 
+import com.alibaba.fastjson.JSONObject;
 import com.yd.scala.classmexer.MemoryUtil;
 import jdk.nashorn.internal.ir.debug.ObjectSizeCalculator;
 
@@ -12,11 +13,13 @@ import java.util.HashMap;
  */
 public class Test {
     public static void main(String[] args) throws Exception {
+        System.out.println(Integer.valueOf(1).equals(1));
         User user = new User() {
             {
                 setId("");//setId(""); 这种情况是不一样的
             }
         };
+        System.out.println(JSONObject.toJSONString(user));
         //  这个对象在内存的总体大小
         System.out.println(ObjectSizeCalculator.getObjectSize(user));
         // 打印对象的shallow size

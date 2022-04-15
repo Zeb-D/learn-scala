@@ -1,0 +1,35 @@
+resolvers:
+  # 调用 sdk
+  - id: http_bin_anything_get #id 需要唯一
+    name: "请求http bin anything接口"
+    description: "请求http bin anything接口"
+    proto: INJVM #方式有三种  INJVM  DUBBO  HTTP
+    interfaceClass: com.yd.scala.hello.graphql.test.HttpBinSdkService #类全名
+    method: anythingGet #方式名
+    # 按参数顺序定义
+    arguments:
+      - b:
+          class: byte
+          value: ${b}
+      - s:
+          class: short
+          value: ${s}
+      - i:
+          class: int
+          value: ${i}
+      - l:
+          class: long
+          value: ${l}
+      - str:
+          class: string
+          value: ${str}
+
+    #发起dubbo 请求
+  - id: traph_dubbo_test
+    proto: DUBBO
+    interfaceClass: com.yd.scala.hello.graphql.test.ITraphTestService
+    method: traphService
+    arguments:
+      - phone:
+          class: String
+          value: ${phone}

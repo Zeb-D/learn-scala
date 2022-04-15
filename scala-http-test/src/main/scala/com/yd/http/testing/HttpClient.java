@@ -106,9 +106,9 @@ public class HttpClient {
     }
 
     public static void main(String[] args) {
-        HttpUtil.Init("https://openapi-cn.wgine.com", "u54a9nj4vw347hypgem7", "jvvesfswkx9ffsahurm5q7umgx123456");
-        HttpUtil.InitToken("a56aed1375573b9280535de764419ad3");
-        HttpUtil.InitProHOST("https://openapi.tuyacn.com");
+        HttpUtil.Init("https://openapi-cn.wgine.com", "*****", "*****");
+        HttpUtil.InitToken("*****");
+        HttpUtil.InitProHOST("https://openapi.****.com");
         String pattern = "/v1.0/apps/{schema}/users";
         Map<String, String> urlMap = new HashMap<>();
         urlMap.put("schema", "ydsmart");
