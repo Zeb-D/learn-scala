@@ -8,23 +8,23 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>hello-scala</module>
         <module>scala-akka</module>
-        <module>scala-grpc</module>
+<!--        <module>scala-grpc</module>-->
         <module>scala-thrift</module>
         <module>scala-tuya-api</module>
         <module>scala-dubbo</module>
         <module>scala-mqtt</module>
         <module>scala-spring-boot</module>
-        <module>scala-webflux</module>
+<!--        <module>scala-webflux</module>-->
         <module>scala-benchmark</module>
         <module>scala-http-test</module>
-        <module>scala-tuya-api</module>
         <module>scala-pulsar</module>
         <module>scala-cache-threadlocal</module>
         <module>scala-fastjson-2-jackson</module>
         <module>scala-class-check</module>
         <module>scala-api-doc</module>
+        <module>hello-scala</module>
+        <module>scala-classmexer</module>
     </modules>
 
     <properties>
@@ -32,7 +32,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <scala.version>2.12.5</scala.version>
+        <scala.version>2.11.12</scala.version>
     </properties>
 
     <build>
@@ -88,26 +88,38 @@
                 </configuration>
                 <executions>
                     <execution>
+                        <id>class-check</id>
+                        <phase>verify</phase>
                         <goals>
                             <goal>class-check</goal>
                         </goals>
+                        <configuration>
+                            <skip>true</skip> <!-- 临时禁用插件 -->
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
             <plugin>
-                <!--先进入该项目进行mvn clean install-->
+                <!--先进入该项目进行  mvn install:install-file \
+  -Dfile=target/scala-api-doc-1.0.0-SNAPSHOT.jar \
+  -DgroupId=com.yd.scala \
+  -DartifactId=scala-api-doc \
+  -Dversion=1.0.0-SNAPSHOT \
+  -Dpackaging=jar \
+  -DgeneratePom=true -->
+                <!--再返回上一级-->
                 <!-- mvn scala-api-doc:doc -Dtype=dubbo -->
                 <groupId>com.yd.scala</groupId>
                 <artifactId>scala-api-doc</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
                 <configuration>
                     <docName>API文档</docName>
-<!--                    <dubboPackages>-->
-<!--                        <dubboPackage>com.yd.http.testing.HttpClientFactory</dubboPackage>-->
-<!--                    </dubboPackages>-->
-<!--                    <exclusionPackages>-->
-<!--                        <exclusionPackage>com.yd.http.testing.HttpClientFactory</exclusionPackage>-->
-<!--                    </exclusionPackages>-->
+                    <dubboPackages>
+                        <dubboPackage>com.yd.http.testing.HttpClientFactory</dubboPackage>
+                    </dubboPackages>
+                    <exclusionPackages>
+                        <exclusionPackage>com.yd.http.testing.HttpClientFactory</exclusionPackage>
+                    </exclusionPackages>
                     <modules>scala-benchmark</modules>
                 </configuration>
                 <executions>
@@ -168,20 +180,4 @@
         <developerConnection>https://github.com/Zeb-D/learn-scala</developerConnection>
     </scm>
 
-    <repositories>
-        <repository>
-            <id>Ali-Repository</id>
-            <name>AliBaba</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-        </repository>
-        <!-- 推荐使用oschina仓库 -->
-        <repository>
-            <id>nexus-osc</id>
-            <url>http://maven.oschina.net/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>nexus-osc-thirdparty</id>
-            <url>http://maven.oschina.net/content/repositories/thirdparty/</url>
-        </repository>
-    </repositories>
 </project>

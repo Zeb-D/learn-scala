@@ -8,17 +8,17 @@ import com.yd.scala.hello.graphql.factory.DubboResolverBeanFactory
 import org.apache.dubbo.rpc.RpcContext
 
 /**
-  * @author created by Zeb灬D on 2021-09-14 21:01
-  */
+ * @author created by Zeb灬D on 2021-09-14 21:01
+ */
 class DubboInvoke[R](val factory: DubboResolverBeanFactory) extends ResolverInvoke[Map[String, Any], R] {
   /**
-    * TraphResolver 执行器
-    *
-    * @param traphResolver Resolver, 由[ResolverLoader]载入
-    * @param args          调用当前Resolver 锁需要的参数
-    * @param decode        调用方法后返回的参数解析的方式
-    *                      目前有的执行器 DubboInvoke HttpInvoke  InJvmInvoke
-    */
+   * TraphResolver 执行器
+   *
+   * @param traphResolver Resolver, 由[ResolverLoader]载入
+   * @param args          调用当前Resolver 锁需要的参数
+   * @param decode        调用方法后返回的参数解析的方式
+   *                      目前有的执行器 DubboInvoke HttpInvoke  InJvmInvoke
+   */
   override def invoke(traphResolver: TraphResolver, args: Map[String, Any], decode: ResolverDecode[R]): R = {
     val resolver: DubboResolver = traphResolver.asInstanceOf[DubboResolver]
     val param: util.ArrayList[Any] = new util.ArrayList[Any]()
@@ -35,10 +35,8 @@ class DubboInvoke[R](val factory: DubboResolverBeanFactory) extends ResolverInvo
     for (attachment <- resolver.attachments) {
       if (attachment.dynamic) {
         val arg = args.get(attachment.name)
-        if (arg.isInstanceOf[String]) {
-          RpcContext.getContext().setAttachment(attachment.name, arg)
-        } else if (arg != null) {
-          RpcContext.getContext().setAttachment(attachment.name, arg.toString())
+        if (arg.nonEmpty) {
+          RpcContext.getContext().setAttachment(attachment.name, arg.get.toString)
         }
       } else {
         if (attachment.value != null) {

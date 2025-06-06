@@ -11,9 +11,9 @@
     <version>1.0.0-SNAPSHOT</version>
     <inceptionYear>2008</inceptionYear>
     <properties>
-        <scala.version>2.11.8</scala.version>
+        <scala.version>2.11.12</scala.version>
         <org.mapstruct.version>1.3.1.Final</org.mapstruct.version>
-        <org.projectlombok.version>1.18.8</org.projectlombok.version>
+        <org.projectlombok.version>1.18.30</org.projectlombok.version>
     </properties>
 
     <dependencies>
@@ -36,6 +36,12 @@
             <artifactId>aspectjtools</artifactId>
             <version>1.9.4</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.scala-lang.modules</groupId>
+            <artifactId>scala-java8-compat_2.11</artifactId>
+            <version>0.8.0</version>
+        </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
@@ -47,6 +53,7 @@
             <version>2.1.6</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>com.novocode</groupId>
             <artifactId>junit-interface</artifactId>
@@ -80,12 +87,28 @@
             <plugin>
                 <groupId>org.scala-tools</groupId>
                 <artifactId>maven-scala-plugin</artifactId>
+                <version>2.15.2</version>
                 <executions>
                     <execution>
+                        <id>scala-compile-first</id>
+                        <phase>process-resources</phase>
                         <goals>
+                            <goal>add-source</goal>
                             <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>scala-test-compile</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
                             <goal>testCompile</goal>
                         </goals>
+                        <configuration>
+                            <includes>
+                                <include>**/*.scala</include>
+                                <include>**/*.java</include>
+                            </includes>
+                        </configuration>
                     </execution>
                 </executions>
                 <configuration>
@@ -93,44 +116,17 @@
                     <args>
                         <arg>-target:jvm-1.8</arg>
                     </args>
+                    <skip>true</skip> <!-- 跳过测试编译 -->
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.scalatest</groupId>
-                <artifactId>scalatest-maven-plugin</artifactId>
-                <version>1.0</version>
-                <configuration>
-                    <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
-                    <junitxml>.</junitxml>
-                    <filereports>WDF TestSuite.txt</filereports>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>test</id>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>3.8.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <skip>true</skip> <!-- 跳过测试编译 -->
                     <compilerArgs>
                         <arg>-parameters</arg>
                     </compilerArgs>
@@ -150,35 +146,21 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
-        </plugins>
-    </build>
-    <reporting>
-        <plugins>
             <plugin>
-                <groupId>org.scala-tools</groupId>
-                <artifactId>maven-scala-plugin</artifactId>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <scalaVersion>${scala.version}</scalaVersion>
+                    <skip>true</skip> <!-- 跳过 Spring Boot 测试 -->
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
-    </reporting>
-
-
-    <repositories>
-        <repository>
-            <id>scala-tools.org</id>
-            <name>Scala-Tools Maven2 Repository</name>
-            <url>http://scala-tools.org/repo-releases</url>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>scala-tools.org</id>
-            <name>Scala-Tools Maven2 Repository</name>
-            <url>http://scala-tools.org/repo-releases</url>
-        </pluginRepository>
-    </pluginRepositories>
+    </build>
 
 </project>

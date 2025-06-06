@@ -6,7 +6,6 @@
         <artifactId>scala-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.yd.scala</groupId>
     <artifactId>scala-dubbo</artifactId>
     <packaging>pom</packaging>
     <properties>

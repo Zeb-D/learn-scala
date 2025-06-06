@@ -3,7 +3,7 @@ package com.yd.akka.test
 import akka.actor.{ActorSystem, Props}
 import akka.pattern.ask
 import akka.util.Timeout
-import com.yd.akka.ScalaPongActor
+import com.yd.scala.akka.ScalaPongActor
 import org.junit.Test
 import org.scalatest.Matchers
 

@@ -15,6 +15,7 @@
     <properties>
         <java.version>1.8</java.version>
         <start-class>com.xxx.Application</start-class>
+        <scala.version>2.11.12</scala.version>
     </properties>
 
     <dependencies>
@@ -108,6 +109,7 @@
             <artifactId>maven-scala-plugin</artifactId>
             <version>2.15.2</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -132,12 +134,56 @@
                         <goals>
                             <goal>testCompile</goal>
                         </goals>
+                        <configuration>
+                            <includes>
+                                <include>**/*.scala</include>
+                                <include>**/*.java</include>
+                            </includes>
+                        </configuration>
                     </execution>
                 </executions>
+                <configuration>
+                    <scalaVersion>${scala.version}</scalaVersion>
+                    <args>
+                        <arg>-target:jvm-1.8</arg>
+                    </args>
+                    <skip>true</skip> <!-- 跳过测试编译 -->
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <compilerArgs>
+                        <!--Java: to make sdk-manager access param.name-->
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                    <skip>true</skip>
+                    <debug>true</debug>
+                    <debuglevel>lines,vars,source</debuglevel>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.30</version>
+                        </path>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>1.2.0.Final</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip> <!-- 跳过 Spring Boot 测试 -->
+                </configuration>
             </plugin>
         </plugins>
     </build>

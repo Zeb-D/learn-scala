@@ -1,4 +1,4 @@
-package com.yd.akka
+package com.yd.scala.akka
 
 import akka.actor.{Actor, Props, Status}
 

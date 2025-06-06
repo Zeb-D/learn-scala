@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class TYHttpClient extends TuyaHttpClientBase {
+public class TYHttpClient extends TYHttpClientBase {
 
     protected static final Log logger = LogFactory.getLog(TYHttpClient.class);
 

@@ -53,8 +53,8 @@ class HttpInvoke[R](httpConfig: HttpConfig) extends ResolverInvoke[Map[String, A
     if (bodyArg != null) {
       val value = args.get(bodyArg.name)
       if (bodyArg.dynamic && value != null) {
-        if (value.isInstanceOf[String]) {
-          body = RequestBody.create(MediaType.parse("application/json"), value.asInstanceOf[String])
+        if (value.nonEmpty && value.get.isInstanceOf[String]) {
+          body = RequestBody.create(MediaType.parse("application/json"), value.get.asInstanceOf[String])
         } else {
           body = RequestBody.create(MediaType.parse("application/json"), toJson(value))
         }

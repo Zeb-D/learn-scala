@@ -1,8 +1,8 @@
 package com.yd.api.doc;
 
-
-import com.github.doiteasy.apidocs.Docs;
-import com.github.doiteasy.apidocs.DocsConfig;
+import io.github.yedaxia.apidocs.ApiDoc;
+import io.github.yedaxia.apidocs.Docs;
+import io.github.yedaxia.apidocs.DocsConfig;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -47,21 +47,16 @@ public class DocMojo extends AbstractMojo {
 
         DocsConfig config = new DocsConfig();
         config.setProjectPath(this.baseDir.getAbsolutePath());
-        config.setAppName(this.baseDir.getName());
-        config.setDocName(this.docName);
         config.setDocsPath("api-" + this.docName);
-        if (this.modules != null && this.modules.size() > 0) {
+        if (this.modules != null && !this.modules.isEmpty()) {
             if (this.dubboPackages != null && !this.dubboPackages.isEmpty()) {
-                dubboPackages.forEach(dubboPackage -> config.addDubboPackages(dubboPackage));
-                config.setFramework("dubbo");
+                dubboPackages.forEach(config::addJavaSrcPath);
+                config.setMvcFramework("dubbo");
                 config.setDocsPath("api-dubbo");
-                if (this.exclusionPackages != null && !this.exclusionPackages.isEmpty()) {
-                    exclusionPackages.forEach(exclusionPackage -> config.addExclusionPackages(exclusionPackage));
-                }
             }
 
             if (this.docType != null) {
-                config.setFramework(this.docType);
+                config.setMvcFramework(this.docType);
                 config.setDocsPath("api-" + this.docType);
             }
 

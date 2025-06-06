@@ -6,7 +6,6 @@
         <artifactId>scala-dubbo</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.yd.scala</groupId>
     <artifactId>scala-dubbo-provider</artifactId>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -107,13 +106,14 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.22</version>
+            <version>1.18.30</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
-            <version>1.2.0.Final</version>
+            <version>1.5.5.Final</version> <!-- 升级到最新稳定版本 -->
         </dependency>
     </dependencies>
 
@@ -133,49 +133,27 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
-                <executions>
-                    <execution>
-                        <id>default-compile</id>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
-                        <id>default-testCompile</id>
-                        <phase>none</phase>
-                    </execution>
-                    <execution>
-                        <id>java-compile</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>java-test-compile</id>
-                        <phase>test-compile</phase>
-                        <goals>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <encoding>UTF-8</encoding>
                     <compilerArgs>
                         <!--Java: to make sdk-manager access param.name-->
                         <arg>-parameters</arg>
                     </compilerArgs>
+                    <skip>true</skip>
                     <debug>true</debug>
                     <debuglevel>lines,vars,source</debuglevel>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
-                            <version>1.16.22</version>
+                            <version>1.18.30</version>
                         </path>
                         <path>
                             <groupId>org.mapstruct</groupId>
                             <artifactId>mapstruct-processor</artifactId>
-                            <version>1.2.0.Final</version>
+                            <version>1.5.5.Final</version> <!-- 升级到最新稳定版本 -->
                         </path>
                     </annotationProcessorPaths>
                 </configuration>

@@ -1,8 +1,8 @@
 package com.yd.scala.hello.bytecode.instrument;
 
-import com.sun.tools.attach.AgentInitializationException;
-import com.sun.tools.attach.AgentLoadException;
-import com.sun.tools.attach.AttachNotSupportedException;
+//import com.sun.tools.attach.AgentInitializationException;
+//import com.sun.tools.attach.AgentLoadException;
+//import com.sun.tools.attach.AttachNotSupportedException;
 
 import java.io.IOException;
 
@@ -22,8 +22,9 @@ public class Attacher {
     //先执行mvn 命令打个scala-classmexer模块包；
     //再执行Base一直跑着
     //再填入这里的值
-    public static void main(String[] args) throws
-            AttachNotSupportedException, IOException, AgentLoadException, AgentInitializationException {
+    public static void main(String[] args)
+//         throws   AttachNotSupportedException, IOException, AgentLoadException, AgentInitializationException
+    {
         // 传入目标 JVM pid
 //        VirtualMachine vm = VirtualMachine.attach("80290");
 //

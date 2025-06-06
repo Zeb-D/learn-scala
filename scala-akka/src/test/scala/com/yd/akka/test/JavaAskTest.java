@@ -3,7 +3,7 @@ package com.yd.akka.test;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
-import com.yd.akka.ScalaPongActor;
+import com.yd.scala.akka.ScalaPongActor;
 import org.junit.Test;
 import scala.concurrent.Future;
 

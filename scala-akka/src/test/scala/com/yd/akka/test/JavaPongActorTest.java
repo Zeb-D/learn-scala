@@ -4,7 +4,7 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.testkit.TestActorRef;
-import com.yd.akka.ScalaPongActor;
+import com.yd.scala.akka.ScalaPongActor;
 import org.junit.Test;
 
 /**

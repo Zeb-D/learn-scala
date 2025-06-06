@@ -9,7 +9,7 @@
     <groupId>com.yd.scala</groupId>
     <artifactId>scala-pulsar</artifactId>
     <properties>
-        <scala.version>2.11.8</scala.version>
+        <scala.version>2.11.12</scala.version>
         <pulsar.version>2.4.0</pulsar.version>
     </properties>
 
@@ -19,6 +19,7 @@
             <artifactId>pulsar-client</artifactId>
             <version>${pulsar.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
@@ -30,6 +31,7 @@
             <version>2.1.6</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>com.novocode</groupId>
             <artifactId>junit-interface</artifactId>
@@ -58,12 +60,28 @@
             <plugin>
                 <groupId>org.scala-tools</groupId>
                 <artifactId>maven-scala-plugin</artifactId>
+                <version>2.15.2</version>
                 <executions>
                     <execution>
+                        <id>scala-compile-first</id>
+                        <phase>process-resources</phase>
                         <goals>
+                            <goal>add-source</goal>
                             <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>scala-test-compile</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
                             <goal>testCompile</goal>
                         </goals>
+                        <configuration>
+                            <includes>
+                                <include>**/*.scala</include>
+                                <include>**/*.java</include>
+                            </includes>
+                        </configuration>
                     </execution>
                 </executions>
                 <configuration>
@@ -71,55 +89,38 @@
                     <args>
                         <arg>-target:jvm-1.8</arg>
                     </args>
+                    <skip>true</skip> <!-- 跳过测试编译 -->
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.scalatest</groupId>
-                <artifactId>scalatest-maven-plugin</artifactId>
-                <version>1.0</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
                 <configuration>
-                    <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
-                    <junitxml>.</junitxml>
-                    <filereports>WDF TestSuite.txt</filereports>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <compilerArgs>
+                        <!--Java: to make sdk-manager access param.name-->
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                    <skip>true</skip>
+                    <debug>true</debug>
+                    <debuglevel>lines,vars,source</debuglevel>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.30</version>
+                        </path>
+                        <path>
+                            <groupId>org.mapstruct</groupId>
+                            <artifactId>mapstruct-processor</artifactId>
+                            <version>1.2.0.Final</version>
+                        </path>
+                    </annotationProcessorPaths>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>test</id>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.scala-tools</groupId>
-                <artifactId>maven-scala-plugin</artifactId>
-                <configuration>
-                    <scalaVersion>${scala.version}</scalaVersion>
-                </configuration>
-            </plugin>
-        </plugins>
-    </reporting>
-
-
-    <repositories>
-        <repository>
-            <id>scala-tools.org</id>
-            <name>Scala-Tools Maven2 Repository</name>
-            <url>http://scala-tools.org/repo-releases</url>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>scala-tools.org</id>
-            <name>Scala-Tools Maven2 Repository</name>
-            <url>http://scala-tools.org/repo-releases</url>
-        </pluginRepository>
-    </pluginRepositories>
 
 </project>

@@ -3,7 +3,7 @@ package com.yd.akka.test;
 import akka.actor.ActorRef;
 import akka.actor.ActorSelection;
 import akka.actor.ActorSystem;
-import com.yd.akka.ArgsActor;
+import com.yd.scala.akka.ArgsActor;
 import com.yd.akka.factory.ActorFactory;
 import org.junit.Test;
 
